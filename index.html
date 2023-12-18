@@ -14,6 +14,8 @@
 
         const lineWidth = 15
 
+        const gapX = 10
+
         const field = {
             w: window.innerWidth,
             h: window.innerHeight,
@@ -33,6 +35,37 @@
             }
         }
 
+        const leftPaddle = {
+             //desenho da raquete esquerda
+            x: gapX,
+            y: 100,
+            w: line.w,
+            h: 200,
+            draw: function(){
+            canvasCtx.fillRect(this.x,this.y,this.w,this.h)
+            }
+        }
+
+        const rigthPaddle = {
+            x: field.w - line.w - gapX,
+            y: 100,
+            w: line.w,
+            h: 200,
+
+            //desenho daa raquete direita
+            draw: function(){
+                 canvasCtx.fillRect(this.x,this.y,this.w,this.h)
+            }
+        }
+
+        const ball = {
+
+            draw: function(){
+
+            }
+        }
+        
+
         function setup(){
             canvasE1.width = canvasCtx.width = field.w //definição da largura. no JS quando há repetitividade de campos como esses, podemos declarar uma variavel recebendo a outra que por sua vez recebe o valor definido
             canvasE1.height = canvasCtx.height = field.h   
@@ -41,17 +74,14 @@
         function draw(){
             field.draw()
             line.draw()
-           
+            leftPaddle.draw()
+            rigthPaddle.draw()
 
             
 
-            //desenho da raquete esquerda
+           
 
-            canvasCtx.fillRect(10,100,lineWidth,200)
-
-            //desenho daa raquete direita
-            canvasCtx.fillRect(window.innerWidth - lineWidth - 10,400,lineWidth,200)
-
+            
             //desenhando a Bolinha
             canvasCtx.beginPath() //não há um comando fillarc, devido a isso deve ser estipulado um beginpath e um fill para finalizar o traçado do arco.
             canvasCtx.arc(500,300,20,0,2*Math.PI,false)
