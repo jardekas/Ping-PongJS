@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Ping-Pong</title>
+    <title>Ping-Pong</title>
+    <link rel="stylesheet" type="text/css" href="style.css"
 </head>
 <body>
-    <h1>Ping-Pong</h1>
-
     <canvas></canvas>
     <script>
         const canvasE1 = document.querySelector("canvas"),
             canvasCtx = canvasE1.getContext("2d")
 
         function setup(){
-            canvasE1.width = window.innerWidth
-            canvasE1.height = window.innerHeight
-
-            canvasCtx.width = window.innerWidth
-            canvasCtx.height = window.innerHeight
+            canvasE1.width = canvasCtx.width = window.innerWidth //definição da largura. no JS quando há repetitividade de campos como esses, podemos declarar uma variavel recebendo a outra que por sua vez recebe o valor definido
+            canvasE1.height = canvasCtx.height = window.innerHeight   
         }
+
+        function draw(){
+            canvasCtx.fillStyle = "#286047" //cor para o campo.
+            canvasCtx.fillRect(0,0,window.innerWidth,window.innerHeight) // Comando usado para definir uma área retangular. Servirá para criar os campos de ambos os lados no jogo
+        }
+
+        setup() //lembrar de declarar as funções para que entrem em vigor
+        draw()
     </script>
 </body>
 </html>
