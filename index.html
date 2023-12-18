@@ -59,6 +59,7 @@
         }
         
         const score = {
+            //placar
             human: 1,
             computer: 2,
 
@@ -76,11 +77,22 @@
             x: 300,
             y: 200,
             r: 20,
+            speed: -4,
+
+            _move: function(){
+                this.x += 1 * this.speed
+                this.y += 1
+            },
+
             draw: function(){
+
+            canvasCtx.fillStyle = "#ffffff" // Embora a melhor forma seria inserir o tipo de cor em todos os objetos. foi deixado dessa forma para mostrar que, caso não seja incluído, será tomado a propriedade do ultimo style para os demais abaixo dele
                 //desenhando a Bolinha
             canvasCtx.beginPath() //não há um comando fillarc, devido a isso deve ser estipulado um beginpath e um fill para finalizar o traçado do arco.
             canvasCtx.arc(this.x,this.y,this.r,0,2*Math.PI,false)
             canvasCtx.fill()
+
+            this._move()
             }
         }
 
@@ -96,14 +108,31 @@
             leftPaddle.draw()
             rigthPaddle.draw()
             score.draw()
-            ball.draw()
+            ball.draw()  
+        }
 
-            //desenhando o placar
-           
+        
+        window.animateFrame = (function(){
+            return (
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function (callback){
+                    return window.setTimeout(callback, 1000 / 60)
+                }
+            )
+        })()
+
+        function main (){
+            animateFrame(main)
+            draw()
         }
 
         setup() //lembrar de declarar as funções para que entrem em vigor
-        draw()
+        main()
+        
     </script>
 </body>
 </html>
