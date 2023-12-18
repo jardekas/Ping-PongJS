@@ -12,9 +12,9 @@
         const canvasE1 = document.querySelector("canvas"),
             canvasCtx = canvasE1.getContext("2d")
 
-        const lineWidth = 15
-
         const gapX = 10
+
+        const mouse = {x:0,y:0}
 
         const field = {
             w: window.innerWidth,
@@ -38,12 +38,17 @@
         const leftPaddle = {
              //desenho da raquete esquerda
             x: gapX,
-            y: 100,
+            y: 0,
             w: line.w,
             h: 200,
+            _move: function(){
+                this.y = mouse.y - this.h/2 //animação da raquete esquerda, o que se dá depois do - é referente a um método para deixar o mouse no meio da raquete.
+            },
             draw: function(){
             canvasCtx.fillRect(this.x,this.y,this.w,this.h)
-            }
+
+            this._move()
+            },
         }
 
         const rigthPaddle = {
@@ -111,15 +116,15 @@
             ball.draw()  
         }
 
-        
+        // Fórmula padrão para tornar a animação mais suave e não pular frames
         window.animateFrame = (function(){
             return (
-                window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.oRequestAnimationFrame ||
-                window.msRequestAnimationFrame ||
-                function (callback){
+                window.requestAnimationFrame || //suavizar a animação no navegador padrão. O mesmo vale para cada um dos que estão abaixo.
+                window.webkitRequestAnimationFrame || // Chrome
+                window.mozRequestAnimationFrame || // Mozila
+                window.oRequestAnimationFrame || // Opera
+                window.msRequestAnimationFrame || // Explorer
+                function (callback){ //função para chamar o movimento da bolinha, após melhoria na animação
                     return window.setTimeout(callback, 1000 / 60)
                 }
             )
@@ -132,7 +137,12 @@
 
         setup() //lembrar de declarar as funções para que entrem em vigor
         main()
-        
+
+        canvasE1.addEventListener("mousemove", function(e){ //evento para receber a movimentação do mouse
+            mouse.x = e.pageX
+            mouse.y = e.pageY
+        })
+
     </script>
 </body>
 </html>
