@@ -19,7 +19,17 @@
             h: window.innerHeight,
             draw: function(){
                 canvasCtx.fillStyle = "#286047" //cor para o campo.
-                canvasCtx.fillRect(0,0,field.w,field.h) // Comando usado para definir uma área retangular. Servirá para criar os campos de ambos os lados no jogo
+                canvasCtx.fillRect(0,0,this.w,this.h) // Comando usado para definir uma área retangular. Servirá para criar os campos de ambos os lados no jogo
+            }
+        }
+
+        const line = {
+            w: 15,
+            h: field.h,
+            draw: function(){
+              //Linha Central
+            canvasCtx.fillStyle = "#ffffff"
+            canvasCtx.fillRect(field.w/2 - this.w/2,0,this.w,this.h)
             }
         }
 
@@ -30,16 +40,10 @@
 
         function draw(){
             field.draw()
+            line.draw()
+           
 
-            //Linha Central
-            canvasCtx.fillStyle = "#ffffff"
-
-            const x = window.innerWidth / 2 - lineWidth / 2
-            const y = 0
-            const w = lineWidth
-            const h = window.innerHeight
-
-            canvasCtx.fillRect(x,y,w,h)
+            
 
             //desenho da raquete esquerda
 
