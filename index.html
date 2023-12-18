@@ -44,6 +44,14 @@
             canvasCtx.beginPath() //não há um comando fillarc, devido a isso deve ser estipulado um beginpath e um fill para finalizar o traçado do arco.
             canvasCtx.arc(500,300,20,0,2*Math.PI,false)
             canvasCtx.fill()
+
+            //desenhando o placar
+            canvasCtx.font = "bold 72px Arial"
+            canvasCtx.textAlign = "center"
+            canvasCtx.textBaseline = "top"
+            canvasCtx.fillStyle = "#33ffda"
+            canvasCtx.fillText("5",window.innerWidth / 4,50)
+            canvasCtx.fillText("2",window.innerWidth / 4 + window.innerWidth / 2,50)
         }
 
         setup() //lembrar de declarar as funções para que entrem em vigor
