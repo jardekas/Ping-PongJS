@@ -59,12 +59,17 @@
         }
 
         const ball = {
-
+            x: 300,
+            y: 200,
+            r: 20,
             draw: function(){
-
+                //desenhando a Bolinha
+            canvasCtx.beginPath() //não há um comando fillarc, devido a isso deve ser estipulado um beginpath e um fill para finalizar o traçado do arco.
+            canvasCtx.arc(this.x,this.y,this.r,0,2*Math.PI,false)
+            canvasCtx.fill()
             }
         }
-        
+
 
         function setup(){
             canvasE1.width = canvasCtx.width = field.w //definição da largura. no JS quando há repetitividade de campos como esses, podemos declarar uma variavel recebendo a outra que por sua vez recebe o valor definido
@@ -76,16 +81,7 @@
             line.draw()
             leftPaddle.draw()
             rigthPaddle.draw()
-
-            
-
-           
-
-            
-            //desenhando a Bolinha
-            canvasCtx.beginPath() //não há um comando fillarc, devido a isso deve ser estipulado um beginpath e um fill para finalizar o traçado do arco.
-            canvasCtx.arc(500,300,20,0,2*Math.PI,false)
-            canvasCtx.fill()
+            ball.draw()
 
             //desenhando o placar
             canvasCtx.font = "bold 72px Arial"
