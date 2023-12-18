@@ -39,6 +39,11 @@
 
             //desenho daa raquete direita
             canvasCtx.fillRect(window.innerWidth - lineWidth - 10,400,lineWidth,200)
+
+            //desenhando a Bolinha
+            canvasCtx.beginPath() //não há um comando fillarc, devido a isso deve ser estipulado um beginpath e um fill para finalizar o traçado do arco.
+            canvasCtx.arc(500,300,20,0,2*Math.PI,false)
+            canvasCtx.fill()
         }
 
         setup() //lembrar de declarar as funções para que entrem em vigor
