@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Ping-Pong</title>
+</head>
+<body>
+    <h1>Ping-Pong</h1>
+
+    <canvas></canvas>
+    <script>
+        const canvasE1 = document.querySelector("canvas"),
+            canvasCtx = canvasE1.getContext("2d")
+
+        function setup(){
+            canvasE1.width = window.innerWidth
+            canvasE1.height = window.innerHeight
+
+            canvasCtx.width = window.innerWidth
+            canvasCtx.height = window.innerHeight
+        }
+    </script>
+</body>
+</html>
