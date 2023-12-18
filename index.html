@@ -23,7 +23,7 @@
             canvasCtx.fillStyle = "#286047" //cor para o campo.
             canvasCtx.fillRect(0,0,window.innerWidth,window.innerHeight) // Comando usado para definir uma área retangular. Servirá para criar os campos de ambos os lados no jogo
 
-
+            //Linha Central
             canvasCtx.fillStyle = "#ffffff"
 
             const x = window.innerWidth / 2 - lineWidth / 2
@@ -32,6 +32,13 @@
             const h = window.innerHeight
 
             canvasCtx.fillRect(x,y,w,h)
+
+            //desenho da raquete esquerda
+
+            canvasCtx.fillRect(10,100,lineWidth,200)
+
+            //desenho daa raquete direita
+            canvasCtx.fillRect(window.innerWidth - lineWidth - 10,400,lineWidth,200)
         }
 
         setup() //lembrar de declarar as funções para que entrem em vigor
