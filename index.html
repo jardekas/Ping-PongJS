@@ -14,14 +14,22 @@
 
         const lineWidth = 15
 
+        const field = {
+            w: window.innerWidth,
+            h: window.innerHeight,
+            draw: function(){
+                canvasCtx.fillStyle = "#286047" //cor para o campo.
+                canvasCtx.fillRect(0,0,field.w,field.h) // Comando usado para definir uma área retangular. Servirá para criar os campos de ambos os lados no jogo
+            }
+        }
+
         function setup(){
-            canvasE1.width = canvasCtx.width = window.innerWidth //definição da largura. no JS quando há repetitividade de campos como esses, podemos declarar uma variavel recebendo a outra que por sua vez recebe o valor definido
-            canvasE1.height = canvasCtx.height = window.innerHeight   
+            canvasE1.width = canvasCtx.width = field.w //definição da largura. no JS quando há repetitividade de campos como esses, podemos declarar uma variavel recebendo a outra que por sua vez recebe o valor definido
+            canvasE1.height = canvasCtx.height = field.h   
         }
 
         function draw(){
-            canvasCtx.fillStyle = "#286047" //cor para o campo.
-            canvasCtx.fillRect(0,0,window.innerWidth,window.innerHeight) // Comando usado para definir uma área retangular. Servirá para criar os campos de ambos os lados no jogo
+            field.draw()
 
             //Linha Central
             canvasCtx.fillStyle = "#ffffff"
