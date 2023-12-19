@@ -56,10 +56,14 @@
             y: 100,
             w: line.w,
             h: 200,
-
+            _move: function(){
+                this.y = ball.y // animando a raquete direita em função da bolinha. Maquina
+            },
             //desenho daa raquete direita
             draw: function(){
                  canvasCtx.fillRect(this.x,this.y,this.w,this.h)
+
+                 this._move()
             }
         }
         
@@ -82,7 +86,7 @@
             x: 300,
             y: 200,
             r: 20,
-            speed: -4,
+            speed: 4,
 
             _move: function(){
                 this.x += 1 * this.speed
