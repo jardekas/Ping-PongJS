@@ -89,8 +89,8 @@
         }
 
         const ball = {
-            x: 0, //saída inicial da bolinha
-            y: 0, // saída inical da bolinha
+            x: 50, //saída inicial da bolinha
+            y: 50, // saída inical da bolinha
             r: 20,
             speed: 5,
             directionX: 1,
@@ -105,6 +105,16 @@
                     } else{
                         //fazer um ponto
                         score.increaseHuman()
+                        this._pointUp()
+                    }
+                }
+
+                if(this.x < this.r + leftPaddle.w + gapX){
+                    if(this.y + this.r > leftPaddle.y && 
+                    this.y - this.r < leftPaddle.y + leftPaddle.h){
+                        this._reverseX()
+                    } else {
+                        score.increaseComputer()
                         this._pointUp()
                     }
                 }
