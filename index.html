@@ -69,8 +69,14 @@
         
         const score = {
             //placar
-            human: 1,
-            computer: 2,
+            human: 0,
+            computer: 0,
+            increaseHuman: function(){
+                this.human++
+            },
+            increaseComputer: function(){
+                this.computer++
+            },
 
             draw: function(){
                 canvasCtx.font = "bold 72px Arial"
@@ -89,7 +95,20 @@
             speed: 5,
             directionX: 1,
             directionY: 1,
-            _calcPosition: function(){ // função para rebater naas bordas do campo
+            _calcPosition: function(){ // função para rebater naas bordas do campo e marcar pontos
+
+                if(this.x > field.w - this.r - gapX - rigthPaddle.w){
+                    if(this.y + this.r > rigthPaddle.y && 
+                    this.y - this.r < rigthPaddle.y + rigthPaddle.h){
+                        //rebate a bola
+                        this._reverseX()
+                    } else{
+                        //fazer um ponto
+                        score.increaseHuman()
+                        this._pointUp()
+                    }
+                }
+
                 if(
                     (this.y - this.r < 0 && this.directionY < 0) || //rebater a bolinha na parte superior
                     (this.y > field.h - this.r && this.directionY > 0) //reabater a bolinha na parte inferior
@@ -102,6 +121,11 @@
             },
             _reverseX: function(){
                 this.directionX *= -1
+            },
+
+            _pointUp: function(){
+                this.x = field.w / 2
+                this.y = field.h / 2
             },
 
             _move: function(){
